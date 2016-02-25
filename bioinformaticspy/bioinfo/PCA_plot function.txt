@@ -1,0 +1,17 @@
+# my_data with only one quali_supp, which has to be a n_umber   
+
+PCA_plot<-function (my_data, quali_supp,a,b) {
+
+#a and b are number of axes    
+# library(FactoMineR) # don't forget it before the function 
+    
+   
+    res.pca <- PCA(my_data, quali.sup=quali_supp, graph=True)
+    aa<- cbind.data.frame(my_data[,quali_supp],res.pca$ind$coord)
+    bb<- coord.ellipse(aa, axes=c(a,b), bary=TRUE)
+    cc<- plot.PCA(res.pca,habillage=quali_supp,ellipse=bb)
+    return cc, plot(res.pca, )
+    
+    }
+coord.ellipse (coord.simul, centre = NULL, axes = c(1, 2),
+level.conf = 0.95, npoint = 100, bary = FALSE)

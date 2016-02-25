@@ -1,0 +1,3 @@
+plotPCAfunct <- function(data, variable){
+
+}

@@ -1,0 +1,83 @@
+unix commandes 
+cd # change directory 
+cd.. # remonter en arrière 
+cd ou cd ~ # sans rien vers repertoir perso
+pwd # 
+ls # lister un repertoir
+ls -l # affiche détaillé 
+	permet d'afficher 
+	1) le type de fichier "-"(fichier normaux) "d" 	dossier 		 
+	2)	rw- r-- r-- droits sous unixx 
+	3) nombre de lien 
+	4/5) nom
+	6) taille on octet 
+	dernier c'est le nom de fichier 
+	
+ls -lh # taille en k ou MO 
+ls -a # affiche les fichier caché 
+q # quit 
+
+man nom_de_commande # exemple man ls equivalent to help 
+
+ls ./dossier/ # lister le contenu du dossier 
+---------------------
+cp # copie 
+cp le_de_fichier_a_copier l'endroit 
+cp le_de_fichier_a_copier.txt l'endroit ./renomer.txt 
+cp -r # pour les dossier
+cp -rv# permet d'afficher la progreesion 
+
+-----------------------
+mv # move ou renomer 
+fonctionne comme cp 
+mv fichier a deplacer /où/
+mv fichier.txt nouveaunon.txt # renomer  
+mv -v # progression 
+-------------
+rm # remove supprimer sans passer par la corbeille 
+rm -f # forcer de supprimer 
+rm -r dossier_a_supp non vide 
+rm -v fichier_a_suppr # avec progression en cas gro fichier 
+rmdir dossier_vide# supp dossier vide 
+--------
+mkdir # crer dossier 
+mkdir dossier # 
+mkdir dossier1 dossier2 # crer 2 dossiers 
+mkdir -p dossier/sousdossier/dossier # --parent arbolissance de dossier
+----------
+ln # racorcis link 
+ln -s cheminpourfichier/bureau/fichier racourcis_dossier # crer fichier racourcis 
+cp fichier.txt racourcis_dossier # copier directement dans le racourcis
+--------------
+more # affiche les fichier page par page 
+more text.txt 
+-------------
+less # page par page 
+less fichier.txt # 
+-------------
+cat # conctonate 
+cat fichier1.txt fichier2.txt # afficher les deux (ou un) 
+--------
+changer le droit d'un fichier rw- r-- r-- 
+chmod # change fils mode 
+chmod u+x fichier1 # ajouter (+) a user au x (exicuteur) pour le ficheir1
+chmod u=rx fichier1 # fixer les paramètres 
+chmod g+w fichier1 # rajouter un droit d'ecriture pour groupe propriétaire 
+
+-------------------------
+avancé 
+
+ps -u nomutilisateru # lister processus pour l'arreter par exemeple 
+					PID identifiant de processus 
+					cmd permet mettre un nom sur le processus 
+
+ps-ef # lister tout les processus du system 
+ps -ejh # lsiter le proces sous forme d'arbre 
+
+
+
+
+
+
+
+ 

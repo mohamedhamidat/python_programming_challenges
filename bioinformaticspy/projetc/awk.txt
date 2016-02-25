@@ -1,0 +1,138 @@
+awk language for processing txt file 
+awk '{proit $0 }' story.txt # print line of story.txt 
+awk '{proit $1 }' story.txt # print the firest word from every line of story.txt 
+
+awk '{proit $1, $2 }' story.txt # print the first and second word from every line
+
+awk '/the/' story.txt # retain evry word conatin the 
+
+awk '/^the/' story.txt # return every line strating with the word 'the'
+awk '/the$/' story.txt # return every line ending with the word 'the'
+
+awk '/[0-9]/' story.txt # return every line only containing numbers
+awk '/[a-z]/' story.txt # return every line only lower case caracter
+
+awk '/hel+o/' story.txt # return every line only containing hel(ddd)o 
+awk '/abs|123/' story.txt # return every line only containing abc or 123
+--------------------
+awk variables :
+FS input field separator varable 
+OFS output /    / /        ///
+NF number fo field 
+NR number of records 
+exemp
+awk '{print NR}' testout.txt 
+
+awk 'END{print NR}' textout.txt # count the lines in a file 
+								END means after awk has finiced process the whole 								file 
+
+awk 'BEGIN {print "the strat"};{print};END {print "the end"}' testout.txt
+-----------------
+awk '{if (NR~/^2$/)print}' testout.txt # print line 2 from testout 
+	 		~ Regular expression match 
+
+awk '{if (NR~2)print}' testout.txt # retrun lines contain number 2 
+awk '{if (NR!~2)print}' testout.txt # print line doesnt contain number 2 
+----------------------
+awk '{ pritn }' testout.txt # retrun every lind 
+awk '{ pritn $1 }' testout.txt # coloumn 1
+awk '{ pritn $1$2}' testout.txt # without space 
+
+awk '/test/ { pritn }' testout.txt # every line contain "test" 
+
+awk '/[a-Z]/ { pritn }' testout.txt # every line contain letter 
+
+awk '/^test/ { pritn }' testout.txt # everyn line starts with 
+
+awk '/test$ / { pritn }' testout.txt # / / / / / /ends with  
+
+awk '{ if ($1 ~ /123/) print }' testout.txt # if clouon 2 contain 123 
+awk '{ if ($1 ~ /[0-9]/) print }' testout.txt # if clouon 2 contain numberz
+
+awk '{if (/^>/)print }
+
+
+
+
+---------------------------
+multi line fasta to one line 
+	
+awk '!/^>/ { printf "%s", $0; n = "\n" } /^>/ { print n $0; n = "" } END { printf "%s", n }' s.txt > s3.txt
+
+awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < s.txt
+					\n rejoute new line avant chaque sequence 
+				
+
+awk '/^>/ {printf("%s\n",$0);next; } { sub(/\r\n$/, ""); printf("%s",$0);} END{printf("\n");}' s.txt > s2.txt
+
+tr -d $'\r' < s.txt | awk '/^>/ {printf("%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' > s2.txt
+
+
+filtering using pipe "|"
+
+########################################################
+
+sub(/\r$/, "") # ça c'est la classe enleve return \r   #
+
+tr -d $'\r' < s.txt |   #### aussi celle là pipe avec awk  ####
+	
+########################################################
+@@@@@@@@@
+exemple @
+@@@@@@@@@
+
+2) tr -d $'\r' < s4.txt | awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' > s42.txt
+ 
+1) awk '!/^>/ { sub(/\r$/, ""); printf "%s", $0; n = "\n" } /^>/ { print n $0; n = "" } END { printf "%s", n }' s.txt > s3.txt 
+
+
+awk '/^>/ {printf("%s\n",$0);next; } { print length ($0);}  END {printf("\n");}' < s2.txt
+
+#####################
+Filtering 
+awk '/manager/{print}' myfile # print the whole line when manager word exist 
+    ----------
+filtering using pipe '|'
+
+gerp -i test test.txt | awk '/123/{print}' 
+
+------
+split 
+awk -F "|" '/manager/{print $2, $3, $4 }' myfile
+
+-----
+printf
+
+--------
+awk -F, delimter is ',' 
+awk -F, 'BEGIN {initialization}{code block} END{final process}' filname 
+		#option
+exemple 
+
+awk -F, '{print $0}' file # print every line 
+awk -F, '{print $1}' file # first column 
+
+awk -F, '{print $1"|"$2}' file # separateur 
+awk -F, '{OFP="|"; print $1, $2}' file # OFP separator 
+
+awk -F, 'NR>1 {OFP="|"; print $1, $2}' file # ignore line 1 ### NR>1
+awk -F, '/pattern/ {OFP="|"; print $1, $2}' # if line contain pattern the block will be excuted 
+awk -F, '{if ($~/pattern/); print }' file
+number of coloms 
+
+awk -F, '{print NF}' file # return number of fileds (colomn)
+
+awk -F, '{print "'$home'"}' file # print roots 
+
+access variabe outside "'pattern'" 
+
+condition {code block}
+
+awk 'BEGIN {FS=","; sum=0; count=0}{if (NR>=2){sum=sum+$5; count++; printf("day:%f Avg:%f sum:%f", count, sum/count, sum)}}
+
+
+
+
+
+
+
